@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'style.css')}}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@700&family=Lato:ital,wght@1,700&family=Pacifico&family=Roboto:wght@500&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+ 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itvedant pvt. lmt.</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<style>
+.errorClass{
+  color: red;
+  font-style: italic;
+}
+  /* Form design */
+.form-group{
+  font-family: Georgia, 'Times New Roman', Times, serif;}
+  
+.formdata h2{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+    
+    color: black;
+} 
+.formdata h4{
+  margin-top: 2%;
+    color: blue;
+    font-family: 'Lato', sans-serif ;
+    
+  }
+</style>
+<body>
+ 
+  <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-light">
+  <a href="http://127.0.0.1:5000/index" class="navbar-brand ml-3" >It <span style="color: #55cbe0;">Vedant</span> </a>
+  <!-- Toggler button setion -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu"
+  aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle Navigation">
+  <span class="navbar-toggler-icon"></span></button>
+  <!-- navbar items -->
+  <div class="collapse navbar-collapse"></div>
+  <div class="collapse navbar-collapse" id="navbarMenu">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a href="http://127.0.0.1:5000/form" class="nav-link">Admission</a>
+          </li>
+          <li class="nav-item">
+              <a href="http://127.0.0.1:5000/attendance" class="nav-link">Attendance</a>
+          </li>
+          <li class="nav-item">
+              <a href="http://127.0.0.1:5000/studentList" class="nav-link">Student Details</a>
+          </li>
+          <li class="nav-item ">
+              <a href="http://127.0.0.1:5000/presentStudents" class="nav-link">Present Students</a>
+          </li>
+          <li class="nav-item ">
+              <a href="#" class="nav-link">Contact us</a>
+          </li>
+      </ul>
+
+      <!-- form  -->
+      <form class="form-inline my-2 my-lg-0">
+          <button class="btn menu-right-btn border" type="submit">Templates</button>
+      </form>
+  </div>
+</nav>
+ 
+  <div class="formdata">
+    <div class="container" p-3,m-3>
+        <h2>Register</h2>
+
+        <form method="POST">
+          <div class="form-group">
+            <label for="txtName">Name:</label>
+            <input type="text" class="form-control" id="name" placeholder="Full name" name="txtName" required>
+          </div>
+          {% if data %}
+          <h5 class="errorClass">{{data['error_name']}}</h5>
+          {% endif %}
+          
+          <div class="form-group">
+            <label for="txtMobile">Mobile:</label>
+            <input type="number" class="form-control" id="pwd" placeholder="Mobile number" name="txtMobile" required>
+          </div>
+          {% if data %}
+          <h5 class="errorClass">{{data['error_mobile']}}</h5>
+          {% endif %}
+
+          <div class="form-group">
+            <label for="txtDOB">Birthdate:</label>
+            <input type="date" class="form-control" id="pwd" placeholder="Date of birth" name="txtDOB" required>
+          </div>
+          
+          
+          <div class="form-group">
+            <label for="txtEmail">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" name="txtEmail" required>
+
+          </div>
+          {% if data %}
+          <h5 class="errorClass">{{data['error_email']}}</h5>
+          {% endif %}
+
+          <div class="form-group">
+            <label for="cars">Choose Branch:</label>
+            <select class="form-control" id="branch" name="branch">
+              <option value="Data Science" selected>Data Science</option>
+              <option value="Web development">Web development</option>
+              <option value="Ui/Ux developer">Ui/Ux developer</option>
+              <option value="Software testing">Software testing</option>
+            </select>
+
+          </div>
+          
+ 
+          <button type="submit" class="btn btn-info">Generate QR</button><br>
+        </div>
+        
+        {% if data %}
+          <h4 class="formdata">{{data['message']}}</h4>
+        {% endif %}
+        </form>
+         
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
+      </div>  
+</body>
+</html>
