@@ -6,6 +6,23 @@ import datetime
 import string
 import re
 
+host = "remotemysql.com"
+user = "BrRG0FGAdO"
+password = "m6PQEFhHS6"
+database="BrRG0FGAdO"
+'''
+Username: BrRG0FGAdO
+
+Database name: BrRG0FGAdO
+
+Password: m6PQEFhHS6
+
+Server: remotemysql.com
+
+Port: 3306
+
+'''
+
 app = Flask(__name__)
 
 cur = None
@@ -17,7 +34,7 @@ mp="^[7-9]{1}[0-9]{9}$" #mobile regex
 
 def connectToDB():#CONNECTION TO DATABASE
     global cur,connection
-    connection = pymysql.connect(host = "localhost",user = "root",password = "",database="itvedant")
+    connection = pymysql.connect(host = host,user = user,password = password, database = database)
     cur = connection.cursor()
 
 
