@@ -9,7 +9,7 @@ itsdangerous==1.1.0
 Jinja2==2.11.3
 MarkupSafe==1.1.1
 numpy==1.19.5
-opencv-python==4.5.1.48
+opencv-python==4.2.0.32
 Pillow==8.1.2
 pycparser==2.20
 PyMySQL==1.0.2
